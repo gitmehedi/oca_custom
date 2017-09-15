@@ -19,21 +19,22 @@
 #
 ##############################################################################
 {
-    'name'       : "User Menu for La Chouette Coop",
-    'summary'    : "Replace top right UserMenu: change support link, remvoe My Odoo Account link",
+    'name'       : "Re-arranage UserMenu",
+    'summary'    : "Re-arranage UserMenu",
     'category'   : 'Extra Tools',
-    'author'     : "La Chouette Coop",
-    'website'    : "http://www.lachouettecoop.fr",
+    'author'     : "Md Mehedi Hasan",
+    'website'    : "http://www.angrybite.wordpress.com",
     'license'    : "AGPL-3",
-    'version'    : '9.0.0.0.1',
+    'version'    : '10.0.0.0.1',
     'installable': True,
+    'application': True,
     'depends'    : [
         'base_setup',
         'base',
         'web',
     ],
     'data'       : [
-        'data/user_menu_chouette.xml',
+        'data/user_menu.xml',
         'views/res_config_view.xml',
     ],
     'qweb'       : [
