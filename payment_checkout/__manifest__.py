@@ -6,7 +6,7 @@
     'summary': 'Payment Acquirer: Checkout Implementation',
     'version': '1.0',
     'description': """Checkout Payment Acquirer""",
-    'depends': ['payment'],
+    'depends': ['payment', 'website_sale'],
     'data': [
         'views/payment_views.xml',
         'views/payment_checkout_templates.xml',

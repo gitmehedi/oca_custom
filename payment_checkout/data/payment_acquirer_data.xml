@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data>
         <record id="payment.payment_acquirer_checkout" model="payment.acquirer">
             <field name="name">Checkout</field>
             <field name="image" type="base64" file="payment_checkout/static/src/img/checkout_icon.png"/>
