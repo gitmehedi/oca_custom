@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="commercial_term_form_view">
+            <field name="name">commercial.term.form</field>
+            <field name="model">commercial.term</field>
+            <field name="arch" type="xml">
+                <form string="Commercial Term Form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="status"/>
+                            </group>
+                        </group>
+                        <separator string="Remarks"/>
+                        <field name="remarks" placeholder="Put an remarks..................."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="commercial_term_tree_view" model="ir.ui.view">
+            <field name="name">commercial.term.tree</field>
+            <field name="model">commercial.term</field>
+            <field name="arch" type="xml">
+                <tree string="Commercial Term Tree">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sales_contract_view_search">
+            <field name="name">commercial.term.search</field>
+            <field name="model">commercial.term</field>
+            <field eval="10" name="priority"/>
+            <field name="arch" type="xml">
+                <search string="Commercial Term">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="status"/>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="sales_commercial_term_list_action" model="ir.actions.act_window">
+            <field name="name">Commercial Term</field>
+            <field name="res_model">commercial.term</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem id="commercial_term_main_menu" name="Incoterms"
+                  parent="commercial_configuration_menu" sequence="140" action="sales_commercial_term_list_action"/>
+
+    </data>
+</odoo>

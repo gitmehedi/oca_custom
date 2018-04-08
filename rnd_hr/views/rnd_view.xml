@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_shipment_form" model="ir.ui.view">
+            <field name="name">rnd.rostering.form</field>
+            <field name="model">rnd.rostering</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Shipment">
+                    <header>
+                        <button string="Chart" custom="click"/>
+                        <button string="Exception" type="object" class="oe_highlight"
+                                name="exceptions_msg"/>
+                        <button name="exceptions_msg" type="object" string="Wizard Testing"
+                                class="oe_highlight"/>
+                    </header>
+
+                    <sheet>
+                        <div id="mygraph"></div>
+
+                        <group string="Details" colspan="4">
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="line_ids">
+                                    <tree editable="bottom">
+                                        <field name="hours"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="shipment_tree_view" model="ir.ui.view">
+            <field name="name">rnd.rostering.tree</field>
+            <field name="model">rnd.rostering</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="name"/>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</odoo>

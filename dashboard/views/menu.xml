@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="bi_dashboard_mainmenu" name="BI Dashboard"
+                  sequence="10"/>
+
+
+    </data>
+</odoo>

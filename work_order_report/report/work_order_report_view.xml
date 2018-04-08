@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_product_work_order">
+            <t t-call="report.html_container">
+                <t t-call="report.external_layout">
+                    <t t-set="o" t-value="purchase.with_context({'lang':purchase.partner_id.lang})"/>
+                    <style>
+                        .table th {
+                        padding: 2px !important;
+                        }
+                        .table td {
+                        padding: 2px !important;
+                        font-size: 12px !important;
+                        }
+                    </style>
+                    <div class="page" style="page-break-inside: auto">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="text-center">Work Order</h2>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div>
+                                        <strong>Purchase Order:</strong>
+                                        <t t-if="not data['name']">
+                                            <span>All</span>
+                                        </t>
+                                        <span t-esc="data['name']"/>
+                                    </div>
+                                    <div>
+                                        <strong>Order Date:</strong>
+                                        <span t-esc="data['order_date']"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-xs-offset-3">
+                                    <div t-field="o.partner_id"
+                                         t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <table class="table table-condensed" style="padding: 0px;">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <span t-esc="value2"
+                                              t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+
+                                    </td>
+                                </tr>
+
+                            </thead>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <report id="report_work_order"
+                string="Work Order"
+                model="purchase.order"
+                report_type="qweb-pdf"
+                name="work_order_report.report_product_work_order"
+                file="work_order_report.report_product_work_order"
+        />
+    </data>
+</odoo>
