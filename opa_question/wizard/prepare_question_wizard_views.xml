@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="questions_paper_wizard_view" model="ir.ui.view">
+            <field name="name">Question Paper</field>
+            <field name="model">questions.paper.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="subject_id"
+                                   options="{'no_create_edit':True,'no_open':True,'no_create':True}"/>
+                            <field name="limit"/>
+
+                        </group>
+                        <group>
+                            <field name="end_date"/>
+                            <field name="category_id"
+                                   options="{'no_create_edit':True,'no_open':True,'no_create':True}"/>
+
+
+                        </group>
+                    </group>
+                    <footer>
+                        <button type="object" name="report_print" string="Print" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_question_paper" model="ir.actions.act_window">
+            <field name="name">Question Paper</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">questions.paper.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="question_paper_action_menu"
+                  parent="sub_report_menu"
+                  action="action_question_paper"/>
+
+    </data>
+</odoo>

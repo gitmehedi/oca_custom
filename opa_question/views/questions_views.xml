@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_exam_questions_tree" model="ir.ui.view">
+            <field name="name">exam.questions.customer.tree</field>
+            <field name="model">exam.questions</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="translation"/>
+                    <field name="meaning"/>
+                    <field name="subject_id"/>
+                    <field name="category_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_exam_questions_form" model="ir.ui.view">
+            <field name="name">exam.questions.customer.form</field>
+            <field name="model">exam.questions</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form>
+
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="subject_id"/>
+                            </group>
+                            <group>
+                                <field name="category_id"/>
+                                <field name="meaning"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record id="view_exam_questions_search" model="ir.ui.view">
+            <field name="name">exam.questions.customer.search</field>
+            <field name="model">exam.questions</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Bill Payment">
+                    <field name="name"/>
+                    <newline/>
+                </search>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="act_open_exam_questions_view">
+            <field name="name">Questions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">exam.questions</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_exam_questions_search"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create New Information.
+                </p>
+            </field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_exam_questions_view_form">
+            <field name="act_window_id" ref="act_open_exam_questions_view"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_exam_questions_form"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_exam_questions_view_tree">
+            <field name="act_window_id" ref="act_open_exam_questions_view"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_exam_questions_tree"/>
+        </record>
+
+        <menuitem id="menu_exam_questions_sub"
+                  parent="sub_menu" sequence="5"
+                  action="act_open_exam_questions_view"/>
+
+    </data>
+</odoo>
