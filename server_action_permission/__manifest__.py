@@ -20,7 +20,7 @@
 ##############################################################################
 
 {
-    'name': 'Server Action Permissions',
+    'name': 'Server Action Permission',
     'version': '0.1',
     'category': 'base',
     'summary': "Tie server actions to groups",
@@ -28,9 +28,9 @@
 Add permissions to server actions using groups. The implementation are 
 similar to Reports permissions.
 """,
-    'author': 'Vertel AB',
-    'website': 'http://www.vertel.se',
-    'depends': ['base',],
+    'author': 'gitmehedi',
+    'website': 'https://angrybite.wordpress.com/',
+    'depends': ['base', ],
     'data': [
         'ir_actions_view.xml',
     ],
