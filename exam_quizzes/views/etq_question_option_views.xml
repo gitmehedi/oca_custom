@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="etq_question_form_views">
+            <field name="name">etq Question Options</field>
+            <field name="model">etq.question</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="view_quiz" type="object" string="View Exam"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="exam_id"/>
+                                <field name="image"/>
+                                <field name="question"/>
+                                <field name="question_rendered"/>
+                                <field name="question_type"/>
+                                <field name="num_options"/>
+                                <field name="num_correct"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Options">
+                                <field name="question_options">
+                                    <tree>
+                                        <field name="question_id"/>
+                                        <field name="option"/>
+                                        <field name="correct"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page>
+                                <field name="question_options_blank">
+                                    <tree>
+                                        <field name="question_id"/>
+                                        <field name="answer"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="etq_question_tree_views">
+            <field name="name">etq exam Tree View</field>
+            <field name="model">etq.question</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="exam_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="etq_question_action">
+            <field name="name">Questions</field>
+            <field name="res_model">etq.question</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create an Question</p>
+            </field>
+        </record>
+
+        <menuitem id="etq_question" name="Questions" parent="etq_exam" action="etq_question_action" sequence="20"/>
+    </data>
+</odoo>
