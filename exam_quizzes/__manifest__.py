@@ -1,0 +1,25 @@
+{
+    'name': "Online Exam / Test / Quiz",
+    'version': "1.0.2",
+    'author': "Md Mehedi Hasan",
+    'category': "Tools",
+    'support': "gitmehedi@gmail.com",
+    'summary': "Informal Online Exam / Test / Quiz",
+    'license': 'GPL-3',
+    'data': [
+        'data/mail.template.csv',
+        'data/res.groups.csv',
+        'security/ir.model.access.csv',
+        'views/etq_exam_views.xml',
+        'views/exam_templates.xml',
+        'views/etq_results_views.xml',
+        'views/etq_question_option_views.xml',
+        'views/etq_exam_share_views.xml',
+    ],
+    'demo': [],
+    'images': [
+        'static/description/2.jpg',
+    ],
+    'depends': ['website', 'mail'],
+    'installable': True,
+}
