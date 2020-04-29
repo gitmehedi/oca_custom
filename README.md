@@ -1,1 +1,7 @@
-[ODOO CUSTOM MODULES]
+# Odoo Application Module
+
+* [Introduction](#introduction)
+* [Appendix](#appendix)
+
+## Introduction
+## Appendix
