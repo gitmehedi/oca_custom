@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding='utf-8'?>
+<odoo>
+    <record id="module_cat_kafka" model="ir.module.category">
+        <field name="name">Stream Kafka</field>
+        <field name="description">Helps you handle your quotations, sale orders and invoicing.</field>
+    </record>
+
+    <record id="grp_kafka_gen_user" model="res.groups">
+        <field name="name">Kafka: General Users</field>
+        <field name="category_id" ref="module_cat_kafka"/>
+    </record>
+
+    <record id="grp_kafka_mang" model="res.groups">
+        <field name="name">Kafka: Manager</field>
+        <field name="category_id" ref="module_cat_kafka"/>
+    </record>
+</odoo>

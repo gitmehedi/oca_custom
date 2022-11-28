@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_kafka_topics_tree">
+            <field name="name">kafka.topics.tree</field>
+            <field name="model">kafka.topics</field>
+            <field name="arch" type="xml">
+                <tree string="Kafka Topics" decoration-info="state=='draft'" decoration-success="state=='approve'"
+                      decoration-danger="state=='reject'" decoration-bf="state in ('approve',)">
+                    <field name="name"/>
+                    <field name="no_of_partition"/>
+                    <field name="replication_node"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_kafka_topics_form">
+            <field name="name">kafka.topics.form</field>
+            <field name="model">kafka.topics</field>
+            <field name="arch" type="xml">
+                <form string="Kafka Topics" duplicate="0">
+                    <header>
+                        <button name="create_topics" string="Create Topics" states="draft" type="object"
+                                class="oe_highlight"/>
+                        <button name="update_topics" string="Update Topics" states="draft" type="object"/>
+                        <button name="delete_topic" string="Delete Topic" states="approve" type="object"/>
+                        <button name="act_approve" string="Approve" states="draft" type="object" class="oe_highlight"/>
+                        <button name="act_draft" string="Draft" states="reject" type="object" class="oe_highlight"/>
+                        <button name="act_reject" string="Reject" states="draft" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_colors='{"cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="no_of_partition"/>
+                                <field name="replication_node"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="kafka_topics_search_view" model="ir.ui.view">
+            <field name="name">kafka.topics.search.view</field>
+            <field name="model">kafka.topics</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <group string="Group By">
+                        <filter string="Pending" name="pending" icon="terp-personal"
+                                domain="[('state','in',('draft','approve')),('pending','=',1),'|',('active','=',0),('active','=',1)]"/>
+                        <filter string="Rejected" name="state" icon="terp-personal"
+                                domain="[('active','=',0),('pending','=',0),('state','=','reject')]"/>
+                        <filter string="In-Active" name="state" icon="terp-personal"
+                                domain="[('active','=',0),('pending','=',0),('state','=','approve')]"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_kafka_topics">
+            <field name="name">Kafka Topics</field>
+            <field name="res_model">kafka.topics</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">
+                {"search_default_active":'False',"search_default_pending":'True'}
+            </field>
+        </record>
+
+        <menuitem id="menu_kafka_topics" parent="sub_kafka_operation" action="action_kafka_topics" sequence="5"/>
+    </data>
+</odoo>
