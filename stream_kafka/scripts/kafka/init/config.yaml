@@ -1,0 +1,19 @@
+database:
+  cassandra:
+    hostname:
+    port:
+    username:
+    password:
+    database:
+  neo4j:
+    hostname:
+    port:
+    username:
+    password:
+    database:
+  postgres:
+    hostname: localhost
+    port: 5433
+    username: odoo
+    password: code200!
+    database: MGP_KAFKA
