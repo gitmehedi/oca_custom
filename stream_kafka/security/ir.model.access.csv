@@ -2,3 +2,9 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 kfk_kfk_topics_gen_user,kfk_kfk_topics_gen_user,model_kafka_topics,grp_kafka_gen_user,1,0,0,0
 kfk_kfk_topics_manager,kfk_kfk_topics_manager,model_kafka_topics,grp_kafka_mang,1,1,1,1
+
+kfk_coll_stream_gen_user,kfk_coll_stream_gen_user,model_collect_streams,grp_kafka_gen_user,1,0,0,0
+kfk_coll_stream_manager,kfk_coll_stream_manager,model_collect_streams,grp_kafka_mang,1,1,1,1
+
+kfk_coll_stream_log_gen_user,kfk_coll_stream_log_gen_user,model_collect_streams_logs,grp_kafka_gen_user,1,0,0,0
+kfk_coll_stream_log_manager,kfk_coll_stream_log_manager,model_collect_streams_logs,grp_kafka_mang,1,1,1,1

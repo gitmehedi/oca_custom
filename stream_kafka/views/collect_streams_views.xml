@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_collect_streams_tree">
+            <field name="name">collect.streams.tree</field>
+            <field name="model">collect.streams</field>
+            <field name="arch" type="xml">
+                <tree string="Kafka Topics" decoration-info="state=='draft'" decoration-success="state=='approve'"
+                      decoration-danger="state=='reject'" decoration-bf="state in ('approve',)">
+                    <field name="name"/>
+                    <field name="log_file"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_collect_streams_form">
+            <field name="name">collect.streams.form</field>
+            <field name="model">collect.streams</field>
+            <field name="arch" type="xml">
+                <form string="Kafka Topics" duplicate="0">
+                    <header>
+                        <button name="start_streams" string="Start Streams" states="draft" type="object"
+                                class="oe_highlight"/>
+                        <button name="collect_logs" string="Collect Logs" states="draft" type="object"/>
+                        <button name="act_approve" string="Approve" states="draft" type="object" class="oe_highlight"/>
+                        <button name="act_draft" string="Draft" states="reject" type="object" class="oe_highlight"/>
+                        <button name="act_reject" string="Reject" states="draft" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_colors='{"cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="log_file"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Log Collection">
+                                <field name="log_ids">
+                                    <tree>
+                                        <field name="message"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_collect_streams">
+            <field name="name">System Logs</field>
+            <field name="res_model">collect.streams</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_collect_streams" parent="sub_kafka_operation" action="action_collect_streams" sequence="10"/>
+    </data>
+</odoo>

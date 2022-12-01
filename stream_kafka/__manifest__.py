@@ -15,6 +15,7 @@
         'security/ir.model.access.csv',
         'views/menu_views.xml',
         'views/res_config_settings.xml',
+        'views/collect_streams_views.xml',
         'views/kafka_topics_views.xml',
     ],
     'installable': True,
